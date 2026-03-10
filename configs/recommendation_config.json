@@ -1,0 +1,49 @@
+{
+  "model_type": "crop_recommendation_ensemble",
+  "model_name": "CropRec-Ensemble-v1",
+  
+  "data": {
+    "data_path": "${SCRATCH}/growai-hpc/data/crop_data.csv",
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "random_state": 42
+  },
+  
+  "xgboost": {
+    "objective": "multi:softprob",
+    "eval_metric": "mlogloss",
+    "max_depth": 8,
+    "learning_rate": 0.1,
+    "n_estimators": 500,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "min_child_weight": 3,
+    "gamma": 0.1,
+    "reg_alpha": 0.1,
+    "reg_lambda": 1.0,
+    "tree_method": "hist",
+    "device": "cuda"
+  },
+  
+  "neural_network": {
+    "hidden_dims": [256, 128, 64],
+    "dropout": 0.3,
+    "batch_norm": true,
+    "learning_rate": 0.001,
+    "batch_size": 256,
+    "epochs": 100,
+    "early_stopping_patience": 15
+  },
+  
+  "training": {
+    "cv_folds": 5,
+    "use_xgb": true,
+    "use_nn": true,
+    "ensemble": true
+  },
+  
+  "output": {
+    "checkpoint_dir": "${WORK}/growai-hpc/checkpoints/recommendation",
+    "log_dir": "${WORK}/growai-hpc/logs/recommendation"
+  }
+}
