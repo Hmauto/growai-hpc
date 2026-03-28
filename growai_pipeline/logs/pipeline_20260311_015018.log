@@ -1,0 +1,63 @@
+========================================
+  GrowAI HPC Training Pipeline
+  CINECA Leonardo - aih4a_metafarm
+========================================
+Started at: Wed Mar 11 01:50:19 CET 2026
+Log file: /leonardo_work/AIH4A_MetaFarm/growai/logs/pipeline_20260311_015018.log
+
+Budget Overview:
+  Total GPU hours: 10,000
+  Monthly allocation: ~4,000 GPU hours
+  This pipeline: 68 GPU hours total
+
+⚠️  Warning: Sensor data not found at /leonardo_scratch/large/userexternal/hmaghrao/growai/data/sensor_data.csv
+   Generate synthetic data with: python src/preprocess_data.py --generate
+
+========================================
+  Submitting Training Jobs
+========================================
+
+Submitting Time Series Training...
+  Script: scripts/timeseries_job.slurm
+  Cost: 16 GPU hours
+  Job ID: 
+
+Submitting Recommendation Training...
+  Script: scripts/recommendation_job.slurm
+  Cost: 4 GPU hours
+  Job ID: 
+
+Submitting LLM Fine-tuning...
+  Note: LLM job can run independently or after other jobs complete
+  Cost: 48 GPU hours
+  Job ID: 
+
+========================================
+  All Jobs Submitted Successfully!
+========================================
+
+Job Summary:
+  Time Series:     Submitting Time Series Training...
+  Script: scripts/timeseries_job.slurm
+  Cost: 16 GPU hours
+  Job ID:   (16 GPU hours)
+  Recommendation:  Submitting Recommendation Training...
+  Script: scripts/recommendation_job.slurm
+  Cost: 4 GPU hours
+  Job ID:   (4 GPU hours)
+  LLM:               (48 GPU hours)
+
+Total Pipeline Cost: 68 GPU hours
+Remaining Budget: ~9,932 GPU hours
+
+Monitoring Commands:
+  Check status:   squeue --me
+  Check budget:   saldo -b
+  View logs:      tail -f logs/*.out
+  Cancel jobs:    scancel $JOB_ID
+
+Results will be saved to:
+  /leonardo_work/AIH4A_MetaFarm/growai/models/
+
+Completed at: Wed Mar 11 01:50:20 CET 2026
+========================================
